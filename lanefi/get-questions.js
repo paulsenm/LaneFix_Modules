@@ -1,37 +1,18 @@
-console.log("This is outside of getQuestions()");
-//function getQuestions(){
-    console.log("This is inside getQuestions()");
     var fs = require("fs");
+    //var allContent = fs.readFileSync("./js/config.js", "utf-8");
 
-    // var allContent = fs.readFileSync("./js/config.js", "utf-8", function(err, allContent){
-    //     if(err){
-    //         console.error(err);
-    //         return;
-    //     }
-    // });
-    // const path = require("path");
-    // console.log(path);
-    var allContent = fs.readFileSync("./js/config.js", "utf-8");
-    //var configFile = require(path.join(__dirname, 'js', 'config'));
-    
-    var configFile = require("../../js/config.js");
-    //const QUESTIONS = require("../../js/config");
+    var functionsFile = require("../../js/functions.js");
+    for (const functionName in functionsFile.exportFunctions){
+        //console.log(`Key was:  ${k}, vaule was: ${v}`);
+        global[functionName] = functionsFile.exportFunctions[functionName];
+    }
 
-    // var start = allContent.indexOf("{");
-    // var end = allContent.lastIndexOf("};") + 2;
+    //timeString = functionsFile.exportFunctions.timeString;
+    console.log(timeString());
+    var questionsFile = require("../../js/config.js");
+    //var timeString = require("../../js/functions.js");
+    //import { timeString } from "../../js/functions.js";
+    // import * as functions from "../../js/functions.js";
+    // import QUESTIONS from "../../js/config.js";
+    //var configFile = require("../../js/config.js");
 
-
-    // var questionsString = allContent.substring(start, end);
-    //var questionsObj = QUESTIONS["MESH_NETWORK"];
-    //var questionsString = JSON.stringify(QUESTIONS);
-
-    //console.log(questionsString);
-    //var questionsObj = JSON.parse(questionsString);
-
-    // fs.writeFile("questions.php", questionsObj, function(err){
-    //     if(err){
-    //         console.error(err);
-    //         return;
-    //     }
-    // });
-//}
