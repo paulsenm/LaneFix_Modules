@@ -15,7 +15,47 @@ function welcome(){
 }
 
 function send(){
-    //process form, do includes, etc
+    require  BASE_DIR . '/includes/testQuestions.php';
+    $json = json_decode($questions, true);
+    
+    //$lines = [];
+    // foreach($_POST as $k => $answer){
+    //     echo "<p>something<p>";
+    //     //extract($question);
+    //     $q = $json[$k];
+    //     //TODO: figure out labels
+    //     $label = $q["formQuestion"];
+    //     $lines[$label] = $answer;
+    //     echo "<p>" . $q . $answer . "<p>";
+
+    // }
+ 
+    $questionsFile = file_get_contents( BASE_DIR . '/cache.questions.json');
+    $questionsArray = json_decode( $questionsFile, true);
+    $lines = [];
+    foreach($_POST as $k => $answer){
+        echo "<p>Foreach on \$_POST<p>";
+        //extract($question);
+        echo "Key was: " . $k;
+        $q = $questionsArray[$k];
+        // exit;
+        // //TODO: figure out labels
+        $label = $q["formQuestion"];
+        echo "Label is: " . $label;
+        $lines[$label] =$label . $answer;
+        echo "<p>" . $label . $answer . "<p>";
+    }
+    $body = implode('<br />', $lines);
+    echo $lines[0];
+    $sender = $_ENV['PHP_MAILER_SENDER_ADDRESS'];
+    $recipient = $_ENV['PHP_MAILER_RECIPIENT_ADDRESS'];
+    $password = $_ENV['PHP_MAILER_PASSWORD'];
+
+    // $subject = $_POST['CUST_INFO']." Member Network Issue";
+    // $subject = "This is a test subject";
+    // $body = "This is a test body";
+    $status = sendMail($sender, $password, $recipient, $subject, $body);
+    print $status;
 }
 
 function routes(){
