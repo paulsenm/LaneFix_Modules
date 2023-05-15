@@ -30,7 +30,7 @@ function send(){
 
     // }
  
-    $questionsFile = file_get_contents( BASE_DIR . '/cache.questions.json');
+    $questionsFile = file_get_contents( BASE_DIR . '/cache.autoQuestions.json');
     $questionsArray = json_decode( $questionsFile, true);
     $lines = [];
     foreach($_POST as $k => $answer){
