@@ -58,8 +58,11 @@ function send(){
     print $status;
 }
 
-function mail($recipient, $subject, $body){
-    return "Recipient: " . $recipient . " Subject: " . $subject . " Body: " . $body;
+function mailTest($testString){
+    // print "Recipient: " . $recipient . " Subject: " . $subject . " Body: " . $body;
+    // return "It worked";
+    echo "Test string was: " . $testString;
+    return "Test string was: " . $testString;
 }
 
 function routes(){
@@ -68,6 +71,6 @@ function routes(){
         "/" => __NAMESPACE__ . "\welcome",
         "diagnostic" => __NAMESPACE__ . "\welcome",
         "send" => __NAMESPACE__ . "\send",
-        "email" => __NAMESPACE__ . "\mail"
+        "email" => __NAMESPACE__ . "\mailTest"
     );
 }
