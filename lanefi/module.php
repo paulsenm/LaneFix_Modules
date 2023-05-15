@@ -58,11 +58,16 @@ function send(){
     print $status;
 }
 
+function mail($recipient, $subject, $body){
+    return "Recipient: " . $recipient . " Subject: " . $subject . " Body: " . $body;
+}
+
 function routes(){
    return array(
         "" => __NAMESPACE__ . "\welcome",
         "/" => __NAMESPACE__ . "\welcome",
         "diagnostic" => __NAMESPACE__ . "\welcome",
-        "send" => __NAMESPACE__ . "\send"
+        "send" => __NAMESPACE__ . "\send",
+        "email" => __NAMESPACE__ . "\mail"
     );
 }
