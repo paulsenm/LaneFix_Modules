@@ -1,0 +1,19 @@
+{
+    "name": "paulsenm/email_module",
+    "description": "LaneFix functionality repo",
+    "type": "wordpress-theme",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Paulsen",
+            "email": "paulsenm@my.lanecc.edu"
+        }
+    ],
+    "require": {
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}
