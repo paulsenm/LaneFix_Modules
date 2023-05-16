@@ -59,26 +59,17 @@ function send(){
 }
 
 function mailTest(){
-    // print "Recipient: " . $recipient . " Subject: " . $subject . " Body: " . $body;
-    // return "It worked";
     if (isset($_POST)){
-        // echo "Recipient was set";
-        // echo "Post array was: " . $_POST;
         $data = file_get_contents("php://input");
         $params = json_decode($data, true);
         foreach($params as $key => $value){
-            echo "Key was: " . $key . " And data was: " . $value;
+            echo "Key was: " . $key . "\nAnd data was: " . $value . "\n \n";
         }
     }
     else {
         echo "Was not set";
         echo "Post array size was: " . sizeof($_POST);
     }
-    foreach($_POST as $key => $val){
-        echo "Key was: " . $key;
-    }
-    //echo "Test string was: " . $testString;
-    //return "Test string was: " . $testString;
 }
 
 function routes(){
